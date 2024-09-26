@@ -1,0 +1,35 @@
+//<BUTTONS (a.btn+tab)>
+// Сніппет (HTML): btn
+
+.button {
+	display: inline-flex;
+	padding: toEm(14, 20) toEm(29, 20);
+	color: #FFF;
+	/* Button/bold */
+	font-family: "Merriweather";
+	@include adaptiveValue("font-size", 20, 18);
+	font-weight: 700;
+	line-height: 120%;
+
+	border-radius: toRem(2);
+	background-color: $orangeColor;
+	transition: background-color 0.3s;
+	@media (any-hover: hover) {
+		&:hover {
+			background-color: $orangeBlackColor;
+		}
+	}
+	&--fw {
+		width: 100%;
+	}
+	&--white {
+		color: #000;
+		background-color: #FFF;
+		font-size: toRem(14);
+		padding: toEm(16, 14) toEm(19, 14);
+		text-transform: uppercase;
+
+		font-family: "DM Serif Text";
+		line-height: 1.1; /* 14px */
+	}
+}

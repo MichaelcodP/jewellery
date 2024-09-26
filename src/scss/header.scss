@@ -1,0 +1,173 @@
+.header {
+    position: sticky;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    z-index: 50;
+    // .header__container
+    &__container {
+        display: flex;
+        align-items: center;
+        @include adaptiveValue("min-height", 96, 46);
+        @include adaptiveValue("gap", 15, 10);
+        padding-top: toRem(5);
+        padding-bottom: toRem(5);
+    }
+    // .header__logo
+    &__logo {
+        position: relative;
+        z-index: 5;
+        color: #000;
+        font-family: "Merriweather";
+        @include adaptiveValue("font-size", 30, 22);
+        font-style: italic;
+        font-weight: 700;
+        flex-shrink: 0;
+    }
+    // .header__menu
+    &__menu {
+        flex: 1 1 auto;
+        font-family: "Merriweather";
+    }
+    // .header__button
+    &__actions {
+        position: relative;
+        z-index: 3;
+        flex-shrink: 0;
+    }
+}
+.menu {
+    // .menu__icon
+    &__icon {
+    }
+    // .menu__body
+    &__body {
+    }
+    // .menu__list
+    &__list {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        @include adaptiveValue("column-gap", 36, 15);
+        row-gap: toRem(5);
+        @media (max-width:$mobile){
+            gap: toRem(15); 
+        }
+    }
+    // .menu__item
+    &__item {
+        // .menu__item--active
+        &--active {
+            & .menu__link {
+                font-weight: 700;
+                text-decoration-line: underline;
+            }
+            
+        }
+        // .menu__item--parent
+        &--parent {
+            position: relative;
+            & .menu__link{
+                display: flex;
+                align-items: center;
+                gap: toRem(4);
+                &::after {
+                    content: "";
+                    background: url('../img/header/ch-down.png') 0 0 no-repeat;
+                    flex: 0 0 toRem(16);
+                    height: toRem(8);
+                    width: toRem(16);
+                    transition: transform 0.3s;
+                }
+            }            
+                &:hover{
+                    & .sub-menu {
+                        opacity: 1;
+                        transform: translate(0px, 0px);
+                        visibility: visible;
+                        pointer-events: all;
+                    }
+                    & .menu__link::after {
+                        transform: rotate(-180deg);
+                    }
+                }                
+            
+        }
+    }
+    // .menu__link
+    &__link {
+        color: #000;
+        @include adaptiveValue("font-size", 20, 18);
+        line-height: 120%; /* 20px */
+        transition: all 0.3s;
+        @media (any-hover: hover){
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+        @media (max-width: $mobile) {
+			font-size: toRem(26);
+            justify-content: center;
+		}
+    }
+}
+
+.sub-menu {
+    position: relative;
+    
+    transition: all 0.3s;
+    @media (min-width:$mobile){
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding-top: toRem(5);
+        transform: translate(0, 10%);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none; 
+        z-index: 5; 
+        
+    }    
+    @media (max-width:$mobile){
+        position: relative;        
+		visibility: visible;
+		opacity: 1;
+		padding-top: toRem(10);
+		transform: translate(0px, 0px);     
+    }   
+    // .sub-menu__list
+    &__list {        
+        width: toRem(150);
+        border-radius: toRem(5);
+        padding: toRem(15);
+        background-color: rgb(240, 201, 175);
+        box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+        @media (max-width:$mobile){
+            width: 100%;
+			border-radius: 2; 
+        }
+        
+    }
+    // .sub-menu__item
+    &__item {
+        &:not(:last-child) {
+            margin-bottom: toRem(10);
+        }
+        @media (max-width:$mobile){
+            &:not(:last-child) {
+                margin-bottom: toRem(15);
+            } 
+        }
+    }
+    // .sub-menu__link
+    &__link {
+        &:hover {
+            text-decoration: underline;
+        }
+        @media (max-width:$mobile){
+             font-size: toRem(20); 
+        }
+    }
+}
+
