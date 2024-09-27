@@ -80,19 +80,32 @@
                     width: toRem(16);
                     transition: transform 0.3s;
                 }
-            }            
-                &:hover{
-                    & .sub-menu {
-                        opacity: 1;
-                        transform: translate(0px, 0px);
-                        visibility: visible;
-                        pointer-events: all;
-                    }
-                    & .menu__link::after {
-                        transform: rotate(-180deg);
-                    }
-                }                
-            
+            }
+            & .sub-menu {
+                opacity: 0;
+                visibility: hidden;
+                transform: translate(0px, 10px);
+                pointer-events: none;
+                transition: opacity 0.3s, transform 0.3s, visibility 0.3s;
+            }
+            &:hover .sub-menu,
+            &:focus-within .sub-menu {
+                opacity: 1;
+                visibility: visible;
+                transform: translate(0px, 0px);
+                pointer-events: all;
+            }
+            .menu__link {
+                &::after {
+                    transition: transform 0.3s;
+                }
+                &:hover::after,
+                &:focus-within::after {
+                    transform: rotate(-180deg);
+                }
+                
+            }
+
         }
     }
     // .menu__link
