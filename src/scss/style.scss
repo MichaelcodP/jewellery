@@ -193,6 +193,16 @@ body {
     }
 }
 .header-block {
+	&._watcher-view {
+		.title {
+			transform: translate(0px, 0px);
+			opacity: 1;
+		}
+		.label {
+			transform: translate(0px, 0px);
+			opacity: 1;
+		}
+	}
 	text-align: center;
 	&:not(:last-child) {
 		@include adaptiveValue("margin-bottom", 62, 35);
@@ -219,10 +229,14 @@ body {
     }
 }
 
-.title {
+.title{
 	font-family: "DM Serif Text";
 	line-height: 1.1; /* 58px */
 	@include adaptiveValue("font-size", 58, 38);
+
+	transform: translate(0px, 120px);
+	opacity: 0;
+	transition: all 0.8s 0.4s;
 }
 .label {
 	color: #818181;
@@ -230,4 +244,8 @@ body {
 	font-weight: 700;
 	line-height: 1.4; /* 42px */
 	@include adaptiveValue("font-size", 30, 28);
+
+	transform: translate(0px, 120px);
+	opacity: 0;
+	transition: all 0.8s 0.6s;
 }
